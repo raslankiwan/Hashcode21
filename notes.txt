@@ -1,0 +1,6 @@
+Things to take into consideration:
+
+1. If ideal path time is greater than simulation time : super low low low priority
+
+2. lowest ideal path time gets highest priority
+
