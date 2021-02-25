@@ -1,3 +1,4 @@
+import random
 
 file_name = "Hashcode21/b.txt"
  
@@ -95,10 +96,22 @@ if __name__ == '__main__':
         car_priority = simulation_line_D - path_time
         car.set_priority(car_priority)
         
-    cars_prioritised  = sorted(cars, key=lambda x: x.priority, reverse=True)
-    for car in enumerate(cars_prioritised):
-        print(f'{car.path[0]}')
+    # cars_prioritised  = sorted(cars, key=lambda x: x.priority, reverse=True)
+    # for car in enumerate(cars_prioritised):
+    #     print(f'{car.path[0]}')
 
-    # for i in range(simulation_line_D):
-    #     print(f'T{i}: ') 
+    output_file = open("output.txt", "w+")
 
+    ans_number_of_intersections = random.randint(a=1, b=number_of_intersections_I)
+    output_file.write(ans_number_of_intersections+'\n')
+    for i in range(ans_number_of_intersections):
+        target_node = nodes[random.randint(a=0, b=ans_number_of_intersections)]
+        node_id = target_node.id
+        output_file.write(node_id+'\n')
+        ans_number_of_in_streets = random.randint(a=0, b=len(target_node.streets_in))
+        output_file.write(ans_number_of_in_streets+'\n')
+        for j in range(ans_number_of_in_streets):
+            target_street = target_node.streets_in[j]
+            target_street_name = target_street.name
+            ans_number_of_seconds = random.randint(a=1, b=target_street.length_L)
+            output_file.write(target_street_name+' '+ans_number_of_seconds+'\n')
